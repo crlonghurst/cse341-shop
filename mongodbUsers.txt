@@ -1,0 +1,2 @@
+user: clonghurst
+password: cse341Shop
