@@ -8,7 +8,7 @@ const isAuth = require('../middleware/is-auth');
 const router = express.Router();
 
 // /admin/add-product => GET
-router.get('/add-product', isAuth.isAuth, isAuth.isAdmin, adminController.getAddProduct);
+router.get('/add-product', isAuth.isAdmin, isAuth.isAuth, adminController.getAddProduct);
 
 // /admin/products => GET
 router.get('/products', isAuth.isAuth, isAuth.isAdmin, adminController.getProducts);

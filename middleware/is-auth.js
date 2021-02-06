@@ -6,7 +6,8 @@ exports.isAuth = (req, res, next) => {
 };
 
 exports.isAdmin = (req,res,next) =>{
-    if(req.session.userLevel ==1){
+    console.log(req.session)
+    if(req.session.user.userLevel ==1){
         return res.redirect('/');
     }
     next();
