@@ -9,7 +9,7 @@
     width: 20rem;
     max-width: 95%;
     margin: 5%;
-    background-color: #255C99;
+    background-color: #495867;
     color: #FBFBFF;
 }
 
@@ -20,7 +20,7 @@
 
 .product__price {
     text-align: center;
-    color: #2EBFA5;
+    color: #CE796B;
     margin-bottom: 0.5rem;
 }
 

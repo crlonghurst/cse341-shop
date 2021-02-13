@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const sendgridTransport = require('nodemailer-sendgrid-transport');
 const { validationResult } = require('express-validator/check');
+const SENDGRID = require('sendgrid');
 
 const User = require('../models/user');
 
@@ -11,7 +12,7 @@ const transporter = nodemailer.createTransport(
   sendgridTransport({
     auth: {
       api_key:
-        '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'
+        process.env.SENDGRID_API
     }
   })
 );
@@ -93,6 +94,9 @@ exports.postLogin = (req, res, next) => {
           if (doMatch) {
             req.session.isLoggedIn = true;
             req.session.user = user;
+            if(user.userLevel > 1){
+              req.session.isAdmin = true;
+            }
             return req.session.save(err => {
               console.log(err);
               res.redirect('/');
@@ -228,7 +232,7 @@ exports.postReset = (req, res, next) => {
 
 exports.getNewPassword = (req, res, next) => {
   const token = req.params.token;
-  User.findOne({ resetToken: token, resetTokenExpiration: { $gt: Date.now() } })
+  User.findOne({ resetToken: token, resetTokenExpiration: { $gt: Date.now()-10 } })
     .then(user => {
       let message = req.flash('error');
       if (message.length > 0) {

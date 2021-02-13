@@ -1,13 +1,15 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/cart.css">
     </head>
-
+<% totalPrice = 0 %>
     <body>
         <%- include('../includes/navigation.ejs') %>
         <main>
             <% if (products.length > 0) { %>
+                <h2>Amount of products in cart: <%= products.length%></h2>
                 <ul class="cart__item-list">
                     <% products.forEach(p => { %>
+                        <% totalPrice += p.productId.price %>
                         <li class="cart__item">
                             <h1><%= p.productId.title %></h1>
                             <h2>Quantity: <%= p.quantity %></h2>
@@ -19,6 +21,7 @@
                         </li>
                     <% }) %>
                 </ul>
+                <h3>Total Price for your order: $<%= totalPrice %></h3>
                 <hr>
                 <div class="centered">
                     <form action="/create-order" method="POST">

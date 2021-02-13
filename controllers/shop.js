@@ -1,14 +1,31 @@
 const Product = require('../models/product');
 const Order = require('../models/order');
 
-exports.getProducts = (req, res, next) => {
+exports.getInstruments = (req, res, next) => {
   Product.find()
     .then(products => {
       console.log(products);
-      res.render('shop/product-list', {
+      res.render('shop/instrument-list', {
         prods: products,
-        pageTitle: 'All Products',
-        path: '/products'
+        pageTitle: 'All Instruments',
+        path: '/instruments'
+      });
+    })
+    .catch(err => {
+      const error = new Error(err);
+      error.httpStatusCode = 500;
+      return next(error);
+    });
+};
+
+exports.getMusic = (req, res, next) => {
+  Product.find()
+    .then(products => {
+      console.log(products);
+      res.render('shop/music-list', {
+        prods: products,
+        pageTitle: 'All Music',
+        path: '/music'
       });
     })
     .catch(err => {

@@ -4,15 +4,40 @@
   box-sizing: border-box;
 }
 
+.nav-img{
+  margin-top: 0em;
+  width: 4%;
+  margin-right:0 !important;
+}
+
+.logoutBTN{
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+.logoutBTN:hover{
+  background-color:#C18C5D;
+}
+
 body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  background-image: url("https://cdn.britannica.com/98/193798-050-81FE50A8/staff.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 main {
   padding: 1rem;
   margin: auto;
+  
 }
 
 form {
@@ -26,7 +51,7 @@ form {
 .main-header {
   width: 100%;
   height: 3.5rem;
-  background-color: #255C99;
+  background-image: url("https://cdn.britannica.com/98/193798-050-81FE50A8/staff.jpg");
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
@@ -34,7 +59,6 @@ form {
 
 .main-header__nav {
   height: 100%;
-  display: none;
   align-items: center;
 }
 
@@ -52,13 +76,13 @@ form {
 
 .main-header__item a {
   text-decoration: none;
-  color: white;
+  color: #C18C5D;
 }
 
 .main-header__item a:hover,
 .main-header__item a:active,
 .main-header__item a.active {
-  color: #2EBFA5;
+  color: white;
 }
 
 .mobile-nav {
@@ -91,6 +115,78 @@ form {
   margin: 1rem;
   padding: 0;
 }
+
+.navbar {
+  overflow: hidden;
+  background-color: #495867;
+  font-family: Arial;
+}
+
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The dropdown container */
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
+}
+
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn{
+  background-color: #C18C5D;
+}
+
+
+
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: #C18C5D;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover{
+  background-color: #ECC8AF;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 
 .mobile-nav__item a {
   text-decoration: none;
@@ -183,8 +279,8 @@ form {
   padding: 0.25rem 1rem;
   text-decoration: none;
   font: inherit;
-  border: 1px solid #2EBFA5;
-  color: #255C99;
+  border: 1px solid #CE796B;
+  color: #C18C5D;
   background: white;
   border-radius: 3px;
   cursor: pointer;
@@ -192,7 +288,7 @@ form {
 
 .btn:hover,
 .btn:active {
-  background-color: #2EBFA5;
+  background-color: #CE796B;
   color: white;
 }
 
@@ -203,6 +299,10 @@ form {
 
   #side-menu-toggle {
     display: none;
+  }
+
+  .main-img{
+    margin-left:35%;
   }
   
   .product-details{

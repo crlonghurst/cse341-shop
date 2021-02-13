@@ -1,7 +1,7 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/orders.css">
     </head>
-
+    <% totalPrice = 0 %>
     <body>
         <%- include('../includes/navigation.ejs') %>
         <main>
@@ -15,11 +15,15 @@
                             <ul class="orders__products">
                                 <% order.products.forEach(p => { %>
                                     <li class="orders__products-item"><%= p.product.title %> (<%= p.quantity %>)</li>
+                                    <% totalPrice += p.product.price %>
                                 <% }); %>
                             </ul>
                         </li>
+                        <li><h3>Your order total was: $<%=totalPrice%></h3></li>
                     <% }); %>
+                    
                 </ul>
+                
             <% } %>
         </main>
         <%- include('../includes/end.ejs') %>

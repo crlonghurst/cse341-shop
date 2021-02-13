@@ -6,32 +6,8 @@
     <%- include('../includes/navigation.ejs') %>
 
     <main>
-        <% if (prods.length > 0) { %>
-            <div class="grid">
-                <% for (let product of prods) { %>
-                    <article class="card product-item">
-                        <header class="card__header">
-                            <h1 class="product__title"><%= product.title %></h1>
-                        </header>
-                        <div class="card__image">
-                            <img src="<%= product.imageUrl %>"
-                                alt="<%= product.title %>">
-                        </div>
-                        <div class="card__content">
-                            <h2 class="product__price">$<%= product.price %></h2>
-                            <p class="product__description"><%= product.description %></p>
-                        </div>
-                        <div class="card__actions">
-                            <a href="/products/<%= product._id %>" class="btn">Details</a>
-                            <% if (isAuthenticated) { %>
-                                <%- include('../includes/add-to-cart.ejs', {product: product}) %>
-                            <% } %>
-                        </div>
-                    </article>
-                <% } %>
-            </div>
-        <% } else { %>
-            <h1>No Products Found!</h1>
-        <% } %>
+        <h1 class="centered">Welcome to Longhurst Brass Emporium</h1>
+        <div class="grid"> We have to offer many instruments, music selections. We have music for Brass Quintets, brass bands, Jazz bands, and sectional bands.</div>
+        <img src="https://lh3.googleusercontent.com/proxy/a-_TYeF4TXlU76bq6WWikS6w05j87WPYMMCoeHTZtS-z_u_ylMxeq0qMe2mmV_v3HXC7kX4qZx94B2LN5DtBQUFu8ePQQW-UIGo7F8gdBXthFAajYEqAHVaTtTVEmg" class="main-img"alt="Brass Instruments">
     </main>
 <%- include('../includes/end.ejs') %>

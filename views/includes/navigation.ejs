@@ -1,31 +1,56 @@
 <div class="backdrop"></div>
 <header class="main-header">
     <button id="side-menu-toggle">Menu</button>
-    <nav class="main-header__nav">
-        <ul class="main-header__item-list">
-            <li class="main-header__item">
-                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
-            </li>
-            <li class="main-header__item">
-                <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
-            </li>
+    <div class="main-header__nav navbar">
+        <img src="https://cdn11.bigcommerce.com/s-5ig7x53cx8/images/stencil/1280x1280/products/3248/3092/MEDS-8017-Treble-Clef__42924.1539612945.png?c=2" class="nav-img" alt="Treble Clef">
+        <!--<ul class="main-header__item-list">-->
+            
+            <!--<li class="main-header__item">-->
+                <a class="<%= path === '/' ? 'active' : '' %>" href="/">Home</a>
+            <!-- </li> -->
+            <div class="dropdown">
+                <button class="dropbtn">Products <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <!-- <li class="main-header__item"> -->
+                        <a class="<%= path === '/instruments' ? 'active' : '' %>" href="/instruments">Instruments</a>
+                    <!-- </li> -->
+                    <!-- <li class="main-header__item"> -->
+                        <a class="<%= path === '/music' ? 'active' : '' %>" href="/music">Music</a>
+                    <!-- </li> -->
+                </div>
+            </div>
             <% if (isAuthenticated) { %>
-                <li class="main-header__item">
+                <div class="dropdown">
+                    <button class="dropbtn">User <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                <!-- <li class="main-header__item"> -->
                     <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
-                </li>
-                <li class="main-header__item">
+                <!-- </li> -->
+                <!-- <li class="main-header__item"> -->
                     <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
-                </li>
-                <li class="main-header__item">
-                    <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
-                    </a>
-                </li>
-                <li class="main-header__item">
-                    <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
-                    </a>
-                </li>
+                <!-- </li> -->
+                </div>
+                </div>
+                <% if (isAdmin){%>
+                <div class="dropdown">
+                    <button class="dropbtn">Admin <i class="fa fa-caret-down"></i>
+                    </button>
+                    <div class="dropdown-content">
+                        <!-- <li class="main-header__item"> -->
+                            <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
+                            </a>
+                        <!-- </li>
+                        <li class="main-header__item"> -->
+                            <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
+                            </a>
+                        <!-- </li> -->
+                    </div>
+                </div>
+                <% } %>
             <% } %>
-        </ul>
+        <!-- </ul> -->
         <ul class="main-header__item-list">
             <% if (!isAuthenticated) { %>
                 <li class="main-header__item">
@@ -38,52 +63,11 @@
                 <li class="main-header__item">
                     <form action="/logout" method="post">
                         <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                        <button type="submit">Logout</button>
+                        <button type="submit" class="logoutBTN">Logout</button>
                     </form>
                 </li>
             <% } %>
         </ul>
-    </nav>
+    </div>
 </header>
 
-<nav class="mobile-nav">
-    <ul class="mobile-nav__item-list">
-        <li class="mobile-nav__item">
-            <a class="<%= path === '/' ? 'active' : '' %>" href="/">Shop</a>
-        </li>
-        <li class="mobile-nav__item">
-            <a class="<%= path === '/products' ? 'active' : '' %>" href="/products">Products</a>
-        </li>
-        <% if (isAuthenticated) { %>
-            <li class="mobile-nav__item">
-                <a class="<%= path === '/cart' ? 'active' : '' %>" href="/cart">Cart</a>
-            </li>
-            <li class="mobile-nav__item">
-                <a class="<%= path === '/orders' ? 'active' : '' %>" href="/orders">Orders</a>
-            </li>
-            <li class="mobile-nav__item">
-                <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/admin/add-product">Add Product
-                </a>
-            </li>
-            <li class="mobile-nav__item">
-                <a class="<%= path === '/admin/products' ? 'active' : '' %>" href="/admin/products">Admin Products
-                </a>
-            </li>
-        <% } %>
-        <% if (!isAuthenticated) { %>
-            <li class="mobile-nav__item">
-                <a class="<%= path === '/login' ? 'active' : '' %>" href="/login">Login</a>
-            </li>
-            <li class="mobile-nav__item">
-                <a class="<%= path === '/signup' ? 'active' : '' %>" href="/signup">Signup</a>
-            </li>
-        <% } else { %>
-            <li class="mobile-nav__item">
-                <form action="/logout" method="post">
-                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
-                    <button type="submit">Logout</button>
-                </form>
-            </li>
-        <% } %>
-    </ul>
-</nav>
